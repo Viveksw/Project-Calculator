@@ -15,4 +15,13 @@ public class TestStringCalculator {
         Assert.assertEquals(number, stringCalculator.add("12"));
     }
 
+    @Test
+    public void testAdd_withTwoNumber(){
+        int number1 = 12;
+        int number2 = 14;
+        int result = number1+number2;
+
+        Assert.assertEquals(result, stringCalculator.add("12,14"));
+    }
+
 }
