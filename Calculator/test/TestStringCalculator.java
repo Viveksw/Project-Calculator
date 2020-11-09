@@ -42,4 +42,12 @@ public class TestStringCalculator {
         Assert.assertEquals(80, stringCalculator.add("10,20\n20,30"));
     }
 
+    @Test
+    public void testAdd_withDifferentDelimiters(){
+        Assert.assertEquals(120, stringCalculator.add("//;\n10;20;30;10;20;30"));
+        Assert.assertEquals(120, stringCalculator.add("//:\n10:20:30:10:20:30"));
+        Assert.assertEquals(120, stringCalculator.add("//#\n10#20#30#10#20#30"));
+        Assert.assertEquals(120, stringCalculator.add("//.\n10.20.30.10.20.30"));
+    }
+
 }
