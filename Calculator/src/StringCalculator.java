@@ -1,7 +1,7 @@
 import java.util.regex.Pattern;
 
 public class StringCalculator {
-    public int add(String numbers) {
+    public int add(String numbers) throws Exception {
 
         if("".equals(numbers))
             return 0;
@@ -18,8 +18,12 @@ public class StringCalculator {
         }
 
         String[] nums = numbers.split(delimiter);
-        if(nums.length == 1)
-            return Integer.parseInt(numbers);
+        if(nums.length == 1) {
+            int number = Integer.parseInt(numbers);
+            if(number < 0)
+                throw new Exception("negatives not allowed:" + number);
+            return number;
+        }
 
         if(nums.length > 1){
             int result = 0;
