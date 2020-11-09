@@ -24,4 +24,13 @@ public class TestStringCalculator {
         Assert.assertEquals(result, stringCalculator.add("12,14"));
     }
 
+    @Test
+    public void testAdd_withUnknownAmountOfNumbers(){
+        Assert.assertEquals(120, stringCalculator.add("10,20,30,10,20,30"));
+        Assert.assertEquals(110, stringCalculator.add("10,20,30,20,30"));
+        Assert.assertEquals(60, stringCalculator.add("10,10,30,10"));
+        Assert.assertEquals(80, stringCalculator.add("30,20,30"));
+        Assert.assertEquals(80, stringCalculator.add("10,20,20,30"));
+    }
+
 }
