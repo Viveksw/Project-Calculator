@@ -3,7 +3,7 @@ public class StringCalculator {
 
         if("".equals(numbers))
             return 0;
-        String[] nums = numbers.split(",");
+        String[] nums = numbers.split(",|\n");
         if(nums.length == 1)
             return Integer.parseInt(numbers);
 
