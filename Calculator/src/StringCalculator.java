@@ -25,11 +25,18 @@ public class StringCalculator {
             return number;
         }
 
+        StringBuilder negativeNumbers = new StringBuilder();
         if(nums.length > 1){
             int result = 0;
             for(int count = 0; count < nums.length; count++){
-                result += Integer.parseInt(nums[count]);
+                int num = Integer.parseInt(nums[count]);
+                if(num < 0){
+                    negativeNumbers.append(num).append(" ");
+                }
+                result += num;
             }
+            if(!"".equals(negativeNumbers.toString()))
+                throw new Exception("negatives not allowed:" + negativeNumbers);
             return result;
         }
         return -1;

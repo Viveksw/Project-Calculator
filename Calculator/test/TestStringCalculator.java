@@ -91,4 +91,17 @@ public class TestStringCalculator {
         }
     }
 
+    @Test
+    public void testAdd_withMultipleNegativeNumbers(){
+        ExpectedException exceptionRule = ExpectedException.none();
+        int number = -10;
+        try {
+            exceptionRule.expect(Exception.class);
+            exceptionRule.expectMessage("negatives not allowed:"+number);
+            stringCalculator.add("10,-20,30,-10,20,30");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
