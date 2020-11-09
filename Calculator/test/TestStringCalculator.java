@@ -1,4 +1,5 @@
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
@@ -103,4 +104,20 @@ public class TestStringCalculator {
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void test_getCalledCount(){
+        stringCalculator.resetCalledCount();
+        try {
+            stringCalculator.add("10,20,30,10,20,30");
+            stringCalculator.add("10,20,30,20,30");
+            stringCalculator.add("10,10,30,10");
+            stringCalculator.add("30,20,30");
+            stringCalculator.add("10,20,20,30");
+            Assert.assertEquals(5, stringCalculator.getCalledCount());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

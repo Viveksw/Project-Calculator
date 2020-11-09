@@ -1,8 +1,9 @@
 import java.util.regex.Pattern;
 
 public class StringCalculator {
+    static int addCalledCount = 0;
     public int add(String numbers) throws Exception {
-
+        addCalledCount++;
         if("".equals(numbers))
             return 0;
 
@@ -40,5 +41,12 @@ public class StringCalculator {
             return result;
         }
         return -1;
+    }
+
+    public int getCalledCount() {
+        return addCalledCount;
+    }
+    public void resetCalledCount() {
+        addCalledCount = 0;
     }
 }
