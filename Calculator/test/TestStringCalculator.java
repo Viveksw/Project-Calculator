@@ -75,7 +75,19 @@ public class TestStringCalculator {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
 
+    @Test
+    public void test_add_withDifferentDelimitersWithDifferentLength(){
+        try {
+            Assert.assertEquals(120, stringCalculator.add("//;;;\n10;;;20;;;30;;;10;;;20;;;30"));
+            Assert.assertEquals(120, stringCalculator.add("//::\n10::20::30::10::20::30"));
+            Assert.assertEquals(120, stringCalculator.add("//###\n10###20###30###10###20###30"));
+            Assert.assertEquals(120, stringCalculator.add("//...\n10...20...30...10...20...30"));
+            Assert.assertEquals(120, stringCalculator.add("//***\n10***20***30***10***20***30"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Test

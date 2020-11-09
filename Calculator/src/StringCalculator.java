@@ -1,3 +1,5 @@
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.regex.Pattern;
 
 public class StringCalculator {
@@ -9,13 +11,21 @@ public class StringCalculator {
 
         String delimiter = "[,\n]";
         if(numbers.contains("//")) {
-            Pattern pattern = Pattern.compile("//(.)\\n(.*)");
+            Pattern pattern = Pattern.compile("//(.*)\\n(.*)");
             String[] numbersWithDeli = pattern.matcher(numbers).replaceAll("$1 $2").split(" ");
             numbers = numbersWithDeli[1];
             delimiter = numbersWithDeli[0];
             // handle special characters which has special meaning in regex
-            if(".$^*!".contains(delimiter))
-                delimiter = "\\"+delimiter;
+
+            if(delimiter.contains(".") || delimiter.contains("*") || delimiter.contains("$") || delimiter.contains("^")
+                || delimiter.contains("!")){
+                StringBuilder specialCharBuilder = new StringBuilder();
+                for (char specialChar : delimiter.toCharArray()) {
+                    specialCharBuilder.append("\\").append(specialChar);
+                }
+                delimiter = specialCharBuilder.toString();
+            }
+
         }
 
         String[] numbs = numbers.split(delimiter);
