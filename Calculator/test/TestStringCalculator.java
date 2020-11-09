@@ -6,7 +6,7 @@ public class TestStringCalculator {
 
     StringCalculator stringCalculator = new StringCalculator();
     @Test
-    public void testAdd_withEmptyString(){
+    public void test_add_withEmptyString(){
         try {
             Assert.assertEquals(0, stringCalculator.add(""));
         } catch (Exception e) {
@@ -15,7 +15,7 @@ public class TestStringCalculator {
     }
 
     @Test
-    public void testAdd_withOneNumber(){
+    public void test_add_withOneNumber(){
         int number = 12;
         try {
             Assert.assertEquals(number, stringCalculator.add("12"));
@@ -25,7 +25,7 @@ public class TestStringCalculator {
     }
 
     @Test
-    public void testAdd_withTwoNumber(){
+    public void test_add_withTwoNumber(){
         int number1 = 12;
         int number2 = 14;
         int result = number1+number2;
@@ -38,7 +38,7 @@ public class TestStringCalculator {
     }
 
     @Test
-    public void testAdd_withUnknownAmountOfNumbers(){
+    public void test_add_withUnknownAmountOfNumbers(){
         try {
             Assert.assertEquals(120, stringCalculator.add("10,20,30,10,20,30"));
             Assert.assertEquals(110, stringCalculator.add("10,20,30,20,30"));
@@ -52,7 +52,7 @@ public class TestStringCalculator {
     }
 
     @Test
-    public void testAdd_withUnknownAmountOfNumbersAndNewLine(){
+    public void test_add_withUnknownAmountOfNumbersAndNewLine(){
         try {
             Assert.assertEquals(120, stringCalculator.add("10\n20,30,10,20,30"));
             Assert.assertEquals(110, stringCalculator.add("10,20,30\n20,30"));
@@ -66,7 +66,7 @@ public class TestStringCalculator {
     }
 
     @Test
-    public void testAdd_withDifferentDelimiters(){
+    public void test_add_withDifferentDelimiters(){
         try {
             Assert.assertEquals(120, stringCalculator.add("//;\n10;20;30;10;20;30"));
             Assert.assertEquals(120, stringCalculator.add("//:\n10:20:30:10:20:30"));
@@ -79,7 +79,7 @@ public class TestStringCalculator {
     }
 
     @Test
-    public void testAdd_withNegativeNumber(){
+    public void test_add_withNegativeNumber(){
         ExpectedException exceptionRule = ExpectedException.none();
         int number = -10;
         try {
@@ -92,7 +92,7 @@ public class TestStringCalculator {
     }
 
     @Test
-    public void testAdd_withMultipleNegativeNumbers(){
+    public void test_add_withMultipleNegativeNumbers(){
         ExpectedException exceptionRule = ExpectedException.none();
         int number = -10;
         try {
@@ -103,5 +103,4 @@ public class TestStringCalculator {
             e.printStackTrace();
         }
     }
-
 }

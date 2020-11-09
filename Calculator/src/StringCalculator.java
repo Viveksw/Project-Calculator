@@ -6,7 +6,7 @@ public class StringCalculator {
         if("".equals(numbers))
             return 0;
 
-        String delimiter = ",|\n";
+        String delimiter = "[,\n]";
         if(numbers.contains("//")) {
             Pattern pattern = Pattern.compile("//(.)\\n(.*)");
             String[] numbersWithDeli = pattern.matcher(numbers).replaceAll("$1 $2").split(" ");
@@ -17,8 +17,8 @@ public class StringCalculator {
                 delimiter = "\\"+delimiter;
         }
 
-        String[] nums = numbers.split(delimiter);
-        if(nums.length == 1) {
+        String[] numbs = numbers.split(delimiter);
+        if(numbs.length == 1) {
             int number = Integer.parseInt(numbers);
             if(number < 0)
                 throw new Exception("negatives not allowed:" + number);
@@ -26,11 +26,11 @@ public class StringCalculator {
         }
 
         StringBuilder negativeNumbers = new StringBuilder();
-        if(nums.length > 1){
+        if(numbs.length > 1){
             int result = 0;
-            for(int count = 0; count < nums.length; count++){
-                int num = Integer.parseInt(nums[count]);
-                if(num < 0){
+            for (String s : numbs) {
+                int num = Integer.parseInt(s);
+                if (num < 0) {
                     negativeNumbers.append(num).append(" ");
                 }
                 result += num;
