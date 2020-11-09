@@ -31,6 +31,8 @@ public class StringCalculator {
             int result = 0;
             for (String s : numbs) {
                 int num = Integer.parseInt(s);
+                if(num > 1000)
+                    continue;
                 if (num < 0) {
                     negativeNumbers.append(num).append(" ");
                 }

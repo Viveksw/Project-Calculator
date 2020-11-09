@@ -1,5 +1,4 @@
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
@@ -106,6 +105,17 @@ public class TestStringCalculator {
     }
 
     @Test
+    public void test_add_ignoreBiggerThan1000(){
+        try {
+            Assert.assertEquals(1090, stringCalculator.add("10,20,1000,10,20,30"));
+            Assert.assertEquals(90, stringCalculator.add("10,20,30,1010,30"));
+            Assert.assertEquals(50, stringCalculator.add("10,10,30,1100"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
     public void test_getCalledCount(){
         stringCalculator.resetCalledCount();
         try {
@@ -119,5 +129,8 @@ public class TestStringCalculator {
             e.printStackTrace();
         }
     }
+
+
+
 
 }
